@@ -4,10 +4,11 @@ import colorama
 
 
 def print_element(colour, text, level):
-    print(colorama.Style.RESET_ALL + f"{"┃ " * level}┣ " + colour + f"{text}")
+    print(colorama.Style.RESET_ALL + f"{'┃ ' * level}┣ " + colour + f"{text}")
+
 
 def parse_folder(path, i=0):
-    try: 
+    try:
         for element in path.iterdir():
             if element.is_dir():
                 print_element(colorama.Fore.YELLOW, element.name, i)
@@ -15,10 +16,10 @@ def parse_folder(path, i=0):
                 parse_folder(element, i)
             if element.is_file():
                 print_element(colorama.Fore.GREEN, element.name, i)
-    except FileNotFoundError as e:   
+    except FileNotFoundError as e:
         print(f'{e} with file path')
     finally:
-        print(colorama.Style.RESET_ALL, end="") 
+        print(colorama.Style.RESET_ALL, end="")
 
 
 def main():
